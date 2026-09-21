@@ -1,0 +1,8 @@
+{
+  "name": "code-style",
+  "description": "House style for the prose that lives in code: comments, docstrings and the rest",
+  "version": "1.0.0",
+  "author": { "name": "Sergey Nesterenko" },
+  "homepage": "https://github.com/Zwergpro/cc-kit",
+  "license": "MIT"
+}

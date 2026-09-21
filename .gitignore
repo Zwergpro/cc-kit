@@ -2,3 +2,5 @@
 .codex
 .claude
 .idea
+__pycache__/
+*.pyc

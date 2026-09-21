@@ -6,5 +6,11 @@
     "name": "Sergey Nesterenko",
     "url": "https://github.com/Zwergpro"
   },
-  "plugins": []
+  "plugins": [
+    {
+      "name": "code-style",
+      "source": "./plugins/code-style",
+      "description": "House style for the prose that lives in code: comments, docstrings and the rest"
+    }
+  ]
 }
