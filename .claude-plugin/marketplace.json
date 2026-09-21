@@ -1,0 +1,10 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "zwergpro-cc-kit",
+  "description": "Personal Claude Code plugins - skills, commands and agents",
+  "owner": {
+    "name": "Sergey Nesterenko",
+    "url": "https://github.com/Zwergpro"
+  },
+  "plugins": []
+}
