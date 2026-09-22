@@ -11,6 +11,11 @@
       "name": "code-style",
       "source": "./plugins/code-style",
       "description": "House style for the prose that lives in code: comments, docstrings and the rest"
+    },
+    {
+      "name": "code-analysis",
+      "source": "./plugins/code-analysis",
+      "description": "Understand how a codebase actually behaves: trace operations end to end and write them up"
     }
   ]
 }

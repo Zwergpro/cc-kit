@@ -1,0 +1,8 @@
+{
+  "name": "code-analysis",
+  "description": "Understand how a codebase actually behaves: trace operations end to end and write them up",
+  "version": "1.0.0",
+  "author": { "name": "Sergey Nesterenko" },
+  "homepage": "https://github.com/Zwergpro/cc-kit",
+  "license": "MIT"
+}

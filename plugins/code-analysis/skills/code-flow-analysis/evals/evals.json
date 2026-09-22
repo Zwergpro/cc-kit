@@ -1,0 +1,59 @@
+{
+  "skill_name": "code-flow-analysis",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Analyze the cluster deletion flow in /workspace/eco-6d708f. It starts at internal/transport/grpc/cluster_delete.go. I need every step: what gets deleted, every if/else branch, every command on remote VMs, and which engine does what. Write two markdown versions - one with just the steps, one with more details - and use ascii flow graphs.",
+      "expected_output": "Two MD files (short + detailed) sharing step IDs, covering both legacy tasker path and Temporal DeleteCluster workflow, with the ECO_TEMPORAL_ENABLED branch, cloud resources deleted, ASCII graphs.",
+      "files": [],
+      "assertions": [
+        "Produces two markdown documents (a short and a detailed version)",
+        "Both documents contain ASCII flow graphs (>=2 each)",
+        "Flow graphs use plain ASCII only (no box-drawing/Unicode arrows)",
+        "Step IDs are shared between the two versions (>=5 IDs, >=80% of short IDs appear in detailed)",
+        "Detailed version cites code locations (>=20 file:line references)",
+        "Short version stays steps-only (fewer file:line refs than detailed and shorter)",
+        "Detailed version has a known-issues / risks section",
+        "Covers both engines: legacy tasker path and Temporal DeleteCluster workflow, split on the Temporal flag",
+        "Documents the API guards: admin-project cluster refused and already-deleted refused",
+        "Documents the state written by the request: stage CLUSTER_DELETING + state SCHEDULED_TO_DELETE_IMMEDIATELY"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "in the eco repo (/workspace/eco-6d708f) what actually happens when someone scales a worker pool up via UpdatePool (internal/transport/grpc/pool_update.go) with a bigger node_count? i want the whole thing end to end incl. the async part, vm creation, join etc. put it in markdown with ascii diagrams, short + detailed",
+      "expected_output": "Two MD files covering sync validation, processing lock, Temporal IncreaseWorkerPool vs legacy path, VM creation, join, lock release, with ASCII graphs.",
+      "files": [],
+      "assertions": [
+        "Produces two markdown documents (a short and a detailed version)",
+        "Both documents contain ASCII flow graphs (>=2 each)",
+        "Flow graphs use plain ASCII only (no box-drawing/Unicode arrows)",
+        "Step IDs are shared between the two versions (>=5 IDs, >=80% of short IDs appear in detailed)",
+        "Detailed version cites code locations (>=20 file:line references)",
+        "Short version stays steps-only (fewer file:line refs than detailed and shorter)",
+        "Detailed version has a known-issues / risks section",
+        "Documents the processing-lock handoff (TryAcquireClusterProcessing ... ReleaseClusterProcessing)",
+        "Covers the Temporal scale-up workflow under its real name (UpscaleWorkerPool)",
+        "Covers VM creation and worker join (kubeadm join) steps"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Trace how an incoming gRPC request to eco (/workspace/eco-6d708f) gets authenticated and authorized - from server setup in internal/app through the interceptor chain and internal/auth to the handler. Every branch (mTLS CN allowlist, IAM token, admin vs client, errors returned). Document it as a flow write-up with ascii graphs, a short and a detailed version.",
+      "expected_output": "Two MD files describing the interceptor chain order, authn branches (mTLS/IAM), authz rules, error codes, with ASCII graphs; adapted to a request pipeline rather than a state machine.",
+      "files": [],
+      "assertions": [
+        "Produces two markdown documents (a short and a detailed version)",
+        "Both documents contain ASCII flow graphs (>=2 each)",
+        "Flow graphs use plain ASCII only (no box-drawing/Unicode arrows)",
+        "Step IDs are shared between the two versions (>=5 IDs, >=80% of short IDs appear in detailed)",
+        "Detailed version cites code locations (>=20 file:line references)",
+        "Short version stays steps-only (fewer file:line refs than detailed and shorter)",
+        "Detailed version has a known-issues / risks section",
+        "States the interceptor order: recovery, metrics, shutdown, authentication, authorization, validation, logging",
+        "Names the gRPC error codes returned (Unauthenticated and PermissionDenied)",
+        "Covers the mTLS common-name allowlist branch"
+      ]
+    }
+  ]
+}
